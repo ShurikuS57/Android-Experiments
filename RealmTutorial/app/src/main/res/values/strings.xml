@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RealmTutorial</string>
+    <string name="title_activity_main">Teachers</string>
+    <string name="text_add_new_teacher">Add new teacher</string>
+    <string name="text_surname">Surname</string>
+    <string name="text_name">Name</string>
+    <string name="text_add_teacher">Add teacher</string>
+    <string name="msg_fill_all_fiekds">Fill in all the fields</string>
+</resources>
