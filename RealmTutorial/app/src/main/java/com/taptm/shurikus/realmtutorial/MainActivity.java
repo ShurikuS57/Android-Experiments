@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.taptm.shurikus.realmtutorial.model.Teacher;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity {
@@ -99,14 +100,18 @@ public class MainActivity extends AppCompatActivity {
                 Teacher teacher = mRealm.createObject(Teacher.class, nextId);
                 teacher.setName(name);
                 teacher.setSurname(surname);
-
-                mAdapter.replaceData(loadTeacher());
             }
         });
     }
 
     private RealmResults<Teacher> loadTeacher(){
         RealmResults<Teacher> results = mRealm.where(Teacher.class).findAll();
+        results.addChangeListener(new RealmChangeListener<RealmResults<Teacher>>() {
+            @Override
+            public void onChange(RealmResults<Teacher> element) {
+                mAdapter.replaceData(element);
+            }
+        });
         return  results;
     }
 
